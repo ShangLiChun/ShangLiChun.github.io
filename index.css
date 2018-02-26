@@ -1,0 +1,362 @@
+html,body{
+	width:100%;
+	margin:0;
+	text-align: center;
+	padding-bottom: 30px;
+    box-sizing:border-box;
+}
+#tabbar{
+    width:40px;
+    min-height:500px;
+    border:1px solid #398;
+    /*border-top-right-radius:5px;
+    border-bottom-right-radius:5px;*/
+    background-color:#fff;
+    position:absolute;
+    top:0;
+    left:-42px;
+    bottom:0;
+    margin:auto;
+    z-index:999;
+}
+#tabbar ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    height:100%;
+}
+#tabbar ul li{
+    padding:5px;
+    height:140px;
+    cursor:pointer;
+}
+#tabbar ul li.active{
+    background-color:#398;
+    color:#fff;
+}
+#tabbar:hover{
+    color:#398;
+    left:0;
+}
+#barbtn{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -40px;
+    margin: auto;
+    width: 20px;
+    height: 40px;
+    padding: 10px;
+    background-color:#fff;
+    border:0.062rem solid #398;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+    border-left:0;
+    cursor:pointer;
+}
+.tab{
+    display:none;
+}
+.tab.def{
+    display:block;
+}
+
+h2{
+    font-family: cursive;
+    text-shadow: 1px 2px 2px red;
+    font-size: 40px;
+    margin: 12px 0
+}
+h4{
+	margin: 12px 0;
+}
+.tab{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.box{
+	width: 100%;
+    height:auto;
+	margin:0 auto;
+	text-align: center;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-around;
+}
+
+.card{
+	width: 300px;
+	height: 550px;
+	position: relative;
+	/*border:1px solid #666;*/
+	float: left;
+	box-sizing: border-box;
+	border-radius: 4px;
+    background: #fff;
+    box-shadow: 3px 2px 10px 5px #666;
+    background-color: rgba(255,255,255,0.8);
+}
+.card.one{
+    width:600px;
+    height: 300px;
+    padding-top: 30px;
+    top: 100px;
+}
+.card:hover{
+	box-shadow: 3px 2px 10px 8px;
+}
+.card table{
+	width: 100%;
+}
+.card thead{
+	padding:5px 0;
+}
+.card table td{
+	padding: 0;
+}
+td.input{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    height:54px;
+}
+#difference{
+	color: #738;
+}
+#pressure{
+	color: #093;
+}
+#loss{
+	color: #763
+}
+#loss dl{
+	overflow: auto;
+	display: flex;
+	justify-content: center;
+}
+#loss dl dt,#loss dl dd{
+	float: left;
+}
+#loss dl dt{
+	width: 40px;
+	text-align: right;
+}
+input{
+	width: 60px;
+	border-radius: 3px;
+}
+.output{
+	display: inline-block;
+	width: 60px;
+	height: 20px;
+	border:1px solid #999;
+	border-radius: 3px;
+	box-shadow: 0px 1px 3px rgba(34, 25, 25, 0.2);
+	margin-top: 5px;
+}
+
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{ 
+     -webkit-appearance: none !important;
+ }
+
+input[type="number"]{
+	-moz-appearance:textfield;
+}
+
+ .delete{
+ 	width: 50px;
+ 	position: absolute;
+ 	left: 0;
+    right: 0;
+    bottom: 5px;
+    margin: auto;
+ }
+
+ .button{
+ 	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: 5px 0;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+ }
+
+ .button:hover {
+	text-decoration: none;
+}
+.button:active {
+	color: #398
+}
+
+
+@media screen and (min-width: 375px)  {
+    html,body{
+	    width: 100%;
+        min-width:100%;
+	    margin:0;
+	    text-align: center;
+	    padding-bottom: 30px;
+        box-sizing:border-box;
+    }
+    .tab{
+        width:100%;
+        /*height:667px;*/
+        overflow:auto;
+    }
+    .box{
+	    width: 100%;
+        height:100%;
+	    margin:0 auto;
+	    text-align: center;
+	    box-sizing: border-box;
+        display:block;
+    }
+    .card{
+	    width: 96%;
+	    height:100%;
+	    position: relative;
+        left:2%;
+	    /*border:1px solid #666;*/
+	    float: left;
+	    box-sizing: border-box;
+	    border-radius: 4px;
+        background: #fff;
+        box-shadow: 3px 2px 10px 5px #666;
+        background-color: rgba(255,255,255,0.8);
+        margin-bottom:30px;
+
+    }
+    .card.one{
+        width:96%;
+        left:2%;
+        font-size:smaller;
+    }
+}
+@media screen and (min-width: 414px)  {
+   html,body{
+	    width: 100%;
+        min-width:100%;
+	    margin:0;
+	    text-align: center;
+	    padding-bottom: 30px;
+        box-sizing:border-box;
+    }
+   .tab{
+        width:100%;
+        /*height:736px;*/
+        overflow:auto;
+    }
+    .box{
+	    width: 100%;
+        height:100%;
+	    margin:0 auto;
+	    text-align: center;
+	    box-sizing: border-box;
+        display:block;
+    }
+    .card{
+	    width: 96%;
+        height:100%;
+	    position: relative;
+         left:2%;
+	    /*border:1px solid #666;*/
+	    float: left;
+	    box-sizing: border-box;
+	    border-radius: 4px;
+        background: #fff;
+        box-shadow: 3px 2px 10px 5px #666;
+        background-color: rgba(255,255,255,0.8);
+        margin-bottom:30px;
+    }
+    .card.one{
+       width:96%;
+        left:2%;
+        font-size:smaller;
+    }
+}
+@media screen and (min-width: 800px) {
+   html,body{
+	    width: 100%;
+        min-width: 940px;
+        height: 100%;
+	    margin:0;
+	    text-align: center;
+	    padding-bottom: 30px;
+        box-sizing:border-box;
+        background: url(images/1497.jpg) no-repeat;
+	    background-size: 100% 100%;
+    }
+    .box{
+	    width: 100%;
+        height:auto;
+	    margin:0 auto;
+	    text-align: center;
+	    box-sizing: border-box;
+        display:block;
+    }
+    .card{
+	    width: 200px;
+        height:550px;
+	    position: relative;
+        left:0;
+	    /*border:1px solid #666;*/
+	    float: left;
+	    box-sizing: border-box;
+	    border-radius: 4px;
+        background: #fff;
+        box-shadow: 3px 2px 10px 5px #666;
+        background-color: rgba(255,255,255,0.8);
+    }
+    .card.one{
+        width:60%;
+        left:0;
+    }
+}
+@media screen and (min-width: 1024px)  {
+    html,body{
+        min-width: 940px;
+	    margin:0;
+	    text-align: center;
+	    padding-bottom: 30px;
+        box-sizing:border-box;
+        background: url(images/1497.jpg) no-repeat;
+	    background-size: 100% 100%;
+    }
+    .box{
+	    width: 100%;
+        height:auto;
+	    margin:0 auto;
+	    text-align: center;
+	    box-sizing: border-box;
+        display:flex;
+    }
+    .card{
+	    width: 300px;
+	    height:550px;
+	    position: relative;
+        left:0;
+	    /*border:1px solid #666;*/
+	    float: left;
+	    box-sizing: border-box;
+	    border-radius: 4px;
+        background: #fff;
+        box-shadow: 3px 2px 10px 5px #666;
+        background-color: rgba(255,255,255,0.8);
+    }
+    .card.one{
+        width:60%;
+        left:0;
+    }
+}
+

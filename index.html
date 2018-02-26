@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" name="viewport" content="IE=edge, initial-scale=1, maximum-scale=0.8, user-scalable=true, width=device-width">
+	<title>馏程修正计算</title>
+	<link rel="stylesheet" href="index.css">
+	<script src="jquery-1.11.2.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="tabbar">
+        <ul>
+            <li class="active">馏程修正计算</li>
+            <li>温度计修正</li>
+            <li>密度计修正</li>
+            <li>电导率修正</li>
+        </ul>
+        <div id="barbtn">菜单</div>
+    </div>
+    <div class="tab def">
+        <h2>馏程修正计算</h2>
+	    <div class="box">
+		    <div id="difference" class="card">
+			    <h4>允许差值</h4>
+			    <table>
+				    <thead>
+					    <tr>
+						    <th>名称</th>
+						    <th>温度(T)</th>
+						    <th>允许差值</th>
+						    <th>回收</th>
+					    </tr>
+				    </thead>
+				    <tbody id="tb1">
+					    <tr class="p">
+						    <td>初馏点</td>
+						    <td><input type="number" class="oneIpt" /></td>
+						    <td><span class="output"></span></td>
+						    <td><input type="number" class="recovery" /></td>
+					    </tr>
+				    </tbody>
+			    </table>
+			    <button type="button" class="button delete">清除</button>
+		    </div>
+		    <div id="pressure" class="card">
+			    <h4>大气压修正</h4>
+			    <table>
+				    <thead>
+					    <tr>
+						    <th>名称</th>
+						    <th>温度(T)</th>
+						    <th>大气压修正</th>
+						    <th>实测大气压</th>
+					    </tr>
+				    </thead>
+				    <tbody id="tb2">
+					    <tr class="k">
+						    <td>初馏点</td>
+						    <td><input type="number" class="oneIpt" /></td>
+						    <td><span class="output"></span></td>
+						    <td><input type="number" class="recovery" /></td>
+					    </tr>
+				    </tbody>
+			    </table>
+			    <button type="button" class="button delete">清除</button>
+		    </div>
+		    <div id="loss" class="card">
+			    <h4>损失量修正</h4>
+			    <dl>
+				    <dt>L:</dt>
+				    <dd><input type="number" class="p_l"></dd>
+			    </dl>
+			    <dl>
+				    <dt>Rmax:</dt>
+				    <dd><input type="number" class="p_m"></dd>
+			    </dl>
+			    <dl>
+				    <dt>Pk:</dt>
+				    <dd><input type="number" class="p_k"></dd>
+			    </dl>
+			    <dl>
+				    <dt>Lc:</dt>
+				    <dd><span class="output one"></span></dd>
+			    </dl>
+			    <dl>
+				    <dt>Rc:</dt>
+				    <dd><span class="output two"></span></dd>
+			    </dl>
+			    <button type="button" class="button delete">清除</button>
+		    </div>
+	    </div>
+    </div>
+	<div class="tab">
+        <h2>温度计修正</h2>
+        <div class="box">
+            <div class="card one">
+                 <table>
+		            <thead>
+			            <tr>
+				            <th>温度计名称</th>
+				            <th>出厂编号</th>
+				            <th>实测温度</th>
+				            <th>修正值</th>
+				            <th>规格型号</th>
+				            <th>统一编号</th>
+				            <th>有效期</th>
+			            </tr>
+		            </thead>
+		            <tbody id="tb3">
+		            </tbody>
+	            </table>
+                <button type="button" class="button delete">清除</button>
+            </div>
+        </div>
+    </div>
+    <div class="tab">
+        <h2>密度计修正</h2>
+        <div class="box">
+            <div class="card one">
+                 <table>
+		            <thead>
+			            <tr>
+				            <th>出厂编号</th>
+				            <th>实测密度</th>
+				            <th>修正值</th>
+				            <th>规格型号</th>
+				            <th>统一编号</th>
+				            <th>有效期</th>
+			            </tr>
+		            </thead>
+		            <tbody id="tb4">
+		            </tbody>
+	            </table>
+                <button type="button" class="button delete">清除</button>
+            </div>
+        </div>
+    </div>
+    <div class="tab">
+        <h2>电导率修正</h2>
+         <div class="box">
+            <div class="card one">
+                 <table>
+		            <thead>
+			            <tr>
+				            <th>实测电导率</th>
+				            <th>允许误差</th>
+				            <th>规格型号</th>
+				            <th>编号</th>
+			            </tr>
+		            </thead>
+		            <tbody id="tb5">
+                        <tr>
+						    <td><input type="number" class="oneIpt" /></td>
+						    <td><span class="output"></span></td>
+						    <td>XXXXXX</td>
+						    <td>XXXXXX</td>
+					    </tr>
+		            </tbody>
+	            </table>
+                <button type="button" class="button delete">清除</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="index.js" type="text/javascript" charset="utf-8"></script>
