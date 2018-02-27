@@ -42,7 +42,7 @@ html,body{
     position: absolute;
     top: 0;
     bottom: 0;
-    right: -40px;
+    right: -41px;
     margin: auto;
     width: 20px;
     height: 40px;
@@ -103,7 +103,7 @@ h4{
     width:600px;
     height: 300px;
     padding-top: 30px;
-    top: 100px;
+    top: 50px;
 }
 .card:hover{
 	box-shadow: 3px 2px 10px 8px;
@@ -152,10 +152,12 @@ input{
 	display: inline-block;
 	width: 60px;
 	height: 20px;
+    line-height: 20px;
 	border:1px solid #999;
 	border-radius: 3px;
 	box-shadow: 0px 1px 3px rgba(34, 25, 25, 0.2);
 	margin-top: 5px;
+    overflow: hidden;
 }
 
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{ 
@@ -234,7 +236,7 @@ input[type="number"]{
         background: #fff;
         box-shadow: 3px 2px 10px 5px #666;
         background-color: rgba(255,255,255,0.8);
-        margin-bottom:30px;
+        margin-top:30px;
 
     }
     .card.one{
@@ -301,6 +303,7 @@ input[type="number"]{
 	    width: 100%;
         height:auto;
 	    margin:0 auto;
+        padding-top:100px;
 	    text-align: center;
 	    box-sizing: border-box;
         display:block;
@@ -319,8 +322,9 @@ input[type="number"]{
         background-color: rgba(255,255,255,0.8);
     }
     .card.one{
-        width:60%;
+        width:80%;
         left:0;
+        font-size: larger;
     }
 }
 @media screen and (min-width: 1024px)  {
@@ -333,13 +337,14 @@ input[type="number"]{
         background: url(images/1497.jpg) no-repeat;
 	    background-size: 100% 100%;
     }
-    .box{
-	    width: 100%;
-        height:auto;
-	    margin:0 auto;
-	    text-align: center;
-	    box-sizing: border-box;
-        display:flex;
+    .box {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        padding-top: 100px;
+        text-align: center;
+        box-sizing: border-box;
+        display: flex;
     }
     .card{
 	    width: 300px;
@@ -355,8 +360,9 @@ input[type="number"]{
         background-color: rgba(255,255,255,0.8);
     }
     .card.one{
-        width:60%;
+        width:80%;
         left:0;
+        font-size: larger;
     }
 }
 
