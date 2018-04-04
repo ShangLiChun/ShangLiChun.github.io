@@ -220,108 +220,462 @@ $('#loss').on('input', 'input.p_k', function () {
      //console.log(sum)
 	$('#loss .output.two').text((Number(maxVal) + Number(num) - sum).toFixed(1)).css('backgroundColor','#ddd');
 })
-  
 
-//温度计修正
-var Thermometer = [
-    {
-        name: '冰点',
-        list: [
-            {
-                factorynum:'8',
-                correction:'-0.03',
-                type:'棒式',
-                unifiednum:'TT01D023',
-                term: '2017.08.14',
-                input:true
-            },{
-                factorynum:'43',
-                correction:'0.10',
-                type:'棒式',
-                unifiednum:'TT01D023',
-                term: '2018.01.18',
-                input:true
-            },
-        ]
-    },{
-        name: '馏程',
-        list: [
-            {
-                factorynum:'505',
-                correction:'-0.80',
-                type:'棒式',
-                unifiednum:'TT01D016',
-                term: '/',
-                input:true
-            },{
-                factorynum:'513',
-                correction:'-0.33',
-                type:'棒式',
-                unifiednum:'TT01D016',
-                term: '/',
-                input:true
-            },
-        ]
-    },{
-        name: '密度',
-        list: [
-            {
-                factorynum:'41',
-                correction:'-0.03',
-                type:'棒式',
-                unifiednum:'TT01DA001',
-                term: '2017.12.15',
-                input:true
-            },{
-                factorynum:'41',
-                correction:'-0.03',
-                type:'棒式',
-                unifiednum:'TT01DA001',
-                term: '2017.12.15',
-                input:true
-            },
-        ]
+
+/*------------------------------------------温度计修正开始---------------------------------------------*/
+/*冰点温度计输入事件*/
+$('#tb3 tr.w-1').on('input','td.unified-f input',function(){
+    console.log($(this).val());
+    var thisval1 = $(this).val()?Number($(this).val()):'';
+    console.log(thisval1)
+    var av1 = $(this).closest('tr').next('tr.x-1').find('input.a').val()? Number($(this).closest('tr').next('tr.x-1').find('input.a').val()):0;
+    var bv1 = $(this).closest('tr').next('tr.x-1').find('input.b').val()?Number($(this).closest('tr').next('tr.x-1').find('input.b').val()):0;
+    var cv1 = $(this).closest('tr').next('tr.x-1').find('input.c').val()?Number($(this).closest('tr').next('tr.x-1').find('input.c').val()):0;
+    var dv1 = $(this).closest('tr').next('tr.x-1').find('input.d').val()?Number($(this).closest('tr').next('tr.x-1').find('input.d').val()):0;
+    console.log(av1)
+    console.log(bv1)
+    console.log(cv1)
+    console.log(dv1)
+    var valueObj1 = {
+        thisval:thisval1,
+        av:av1,
+        bv:bv1,
+        cv:cv1,
+        dv:dv1
     }
-]
+    var $select1 = $(this).closest('tr').next('tr.x-1').find('span.output');
+    reckonFun('1',valueObj1,$select1)
+})
+
+
+recinputFun('1')
+recinputFun('2')
+recinputFun('3')
+function recinputFun(type){
+    console.log(type)
+    $('#tb3 tr.x-'+type+' input.otp').each(function(index,ele){
+    console.log(index)
+    $(this).on('input',function(){
+        console.log($(this).val());
+        var v = $(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()?Number($(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()):0;
+        var $slt = $(this).closest('tr.x-'+type).find('span.output');
+        console.log(v)
+        console.log($slt)
+        if(index == 0){
+            var av= $(this).val()?Number($(this).val()):0;
+            var bv= $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
+            var cv= $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
+            var dv= $(this).closest('tr.x-'+type).find('input.d').val()?Number($(this).closest('tr.x-'+type).find('input.d').val()):0;
+            console.log(av)
+            console.log(bv)
+            console.log(cv)
+            console.log(dv)
+            var Obj = {
+                thisval:v,
+                av:av,
+                bv:bv,
+                cv:cv,
+                dv:dv
+            }
+            reckonFun(type,Obj,$slt);
+        }else if(index == 1){
+            var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
+            var bv = $(this).val()?Number($(this).val()):0;
+            var cv = $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
+            var dv = $(this).closest('tr.x-'+type).find('input.d').val()?Number($(this).closest('tr.x-'+type).find('input.d').val()):0;
+            console.log(av)
+            console.log(bv)
+            console.log(cv)
+            console.log(dv)
+            var Obj = {
+                thisval:v,
+                av:av,
+                bv:bv,
+                cv:cv,
+                dv:dv
+            }
+            reckonFun(type,Obj,$slt);
+        }else if(index == 2){
+            var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
+            var bv = $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
+            var cv = $(this).val()?Number($(this).val()):0;
+            var dv = $(this).closest('tr.x-'+type).find('input.d').val()?Number($(this).closest('tr.x-'+type).find('input.d').val()):0;
+            console.log(av)
+            console.log(bv)
+            console.log(cv)
+            console.log(dv)
+            var Obj = {
+                thisval:v,
+                av:av,
+                bv:bv,
+                cv:cv,
+                dv:dv
+            }
+            reckonFun(type,Obj,$slt); 
+        }else if(index == 3){
+            var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
+            var bv = $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
+            var cv = $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
+            var dv = $(this).val()?Number($(this).val()):0;
+            console.log(av)
+            console.log(bv)
+            console.log(cv)
+            console.log(dv)
+            var Obj = {
+                thisval:v,
+                av:av,
+                bv:bv,
+                cv:cv,
+                dv:dv
+            }
+            reckonFun(type,Obj,$slt);
+        }
+    })
+})
+}
+
+/*密度温度计输入事件*/
+$('#tb3 tr.w-2').on('input','td.unified-f input',function(){
+    console.log($(this).val());
+    var thisval2 = $(this).val()?Number($(this).val()):'';
+    console.log(thisval2)
+    var av2 = $(this).closest('tr').next('tr.x-2').find('input.a').val()? Number($(this).closest('tr').next('tr.x-2').find('input.a').val()):0;
+    var bv2 = $(this).closest('tr').next('tr.x-2').find('input.b').val()?Number($(this).closest('tr').next('tr.x-2').find('input.b').val()):0;
+    var cv2 = $(this).closest('tr').next('tr.x-2').find('input.c').val()?Number($(this).closest('tr').next('tr.x-2').find('input.c').val()):0;
+    var dv2 = $(this).closest('tr').next('tr.x-2').find('input.d').val()?Number($(this).closest('tr').next('tr.x-2').find('input.d').val()):0;
+    console.log(av2)
+    console.log(bv2)
+    console.log(cv2)
+    console.log(dv2)
+    var valueObj2 = {
+        thisval:thisval2,
+        av:av2,
+        bv:bv2,
+        cv:cv2,
+        dv:dv2
+    }
+    var $select2 = $(this).closest('tr').next('tr.x-2').find('span.output');
+    reckonFun('2',valueObj2,$select2)
+})
+/*馏程温度计输入事件*/
+$('#tb3 tr.w-3').on('input','td.unified-f input',function(){
+    console.log($(this).val());
+    var thisval3 = $(this).val()?Number($(this).val()):'';
+    console.log(thisval3)
+    var av3 = $(this).closest('tr').next('tr.x-3').find('input.a').val()? Number($(this).closest('tr').next('tr.x-3').find('input.a').val()):0;
+    var bv3 = $(this).closest('tr').next('tr.x-3').find('input.b').val()?Number($(this).closest('tr').next('tr.x-3').find('input.b').val()):0;
+    var cv3 = $(this).closest('tr').next('tr.x-3').find('input.c').val()?Number($(this).closest('tr').next('tr.x-3').find('input.c').val()):0;
+    var dv3 = $(this).closest('tr').next('tr.x-3').find('input.d').val()?Number($(this).closest('tr').next('tr.x-3').find('input.d').val()):0;
+    console.log(av3)
+    console.log(bv3)
+    console.log(cv3)
+    console.log(dv3)
+    var valueObj3 = {
+        thisval:thisval3,
+        av:av3,
+        bv:bv3,
+        cv:cv3,
+        dv:dv3
+    }
+    var $select3 = $(this).closest('tr').next('tr.x-3').find('span.output');
+    reckonFun('3',valueObj3,$select3)
+})
+/*温度计计修正计算公式*/
+function reckonFun(type,value,select){
+    console.log(type)
+    console.log(value)
+    if(value.thisval!=''){
+        if(type == '1'){
+            var returnVal = 
+            value.thisval <= -60?value.av:
+            value.thisval>-60&&value.thisval<=-40?(value.bv-value.av)/20*(value.thisval+60) + value.av:
+            value.thisval>-40&&value.thisval<=-20?(value.cv-value.bv)/20*(value.thisval+40) + value.bv:
+            value.thisval>-20&&value.thisval<=0?(value.dv-value.cv)/20*(value.thisval+20) + value.cv:'';
+            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
+            console.log(finalVal)
+            select.html(finalVal)
+        }else if(type == '2'){
+            var returnVal =
+            value.thisval <= -20?value.av:
+            value.thisval>-20&&value.thisval<=0?(value.bv-value.av)/20*(value.thisval+20) + value.av:
+            value.thisval>0&&value.thisval<=20?(value.cv-value.bv)/20*(value.thisval) + value.bv:
+            value.thisval>20&&value.thisval<=40?(value.dv-value.cv)/20*(value.thisval-20) + value.cv:'';
+            console.log(returnVal)
+            console.log(PointFloat(returnVal,2))
+            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
+            console.log(finalVal)
+            select.html(finalVal)
+        }else if(type == '3'){
+            var returnVal =
+            value.thisval <= 0?value.av:
+            value.thisval>0&&value.thisval<=100?(value.bv-value.av)/100*(value.thisval) + value.av:
+            value.thisval>100&&value.thisval<=200?(value.cv-value.bv)/100*(value.thisval-100) + value.bv:
+            value.thisval>200&&value.thisval<=300?(value.dv-value.cv)/100*(value.thisval-200) + value.cv:'';
+            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
+            console.log(finalVal)
+            select.html(finalVal)
+        }
+    }else{
+        select.html('')
+    }
+    
+}
+
+
+/*-----------------------------------------温度计修正结束----------------------------------------------*/
+/*-----------------------------------------密度计修正开始----------------------------------------------*/
+/*750~800密度计输入事件*/
+$('#tb4 tr.w-1').on('input','td.unified-f input',function(){
+    console.log($(this).val());
+    var val1 = $(this).val()?Number($(this).val()):'';
+    console.log(val1)
+    var avl1 = $(this).closest('tr').next('tr.x-1').find('input.a').val()? Number($(this).closest('tr').next('tr.x-1').find('input.a').val()):0;
+    var bvl1 = $(this).closest('tr').next('tr.x-1').find('input.b').val()?Number($(this).closest('tr').next('tr.x-1').find('input.b').val()):0;
+    var cvl1 = $(this).closest('tr').next('tr.x-1').find('input.c').val()?Number($(this).closest('tr').next('tr.x-1').find('input.c').val()):0;
+    // var dvl1 = $(this).closest('tr').next('tr.x-1').find('input.d').val()?Number($(this).closest('tr').next('tr.x-1').find('input.d').val()):0;
+    console.log(avl1)
+    console.log(bvl1)
+    console.log(cvl1)
+    // console.log(dvl1)
+    var valObj1 = {
+        thisval:val1,
+        av:avl1,
+        bv:bvl1,
+        cv:cvl1,
+        // dv:dvl1
+    }
+    var $slt1 = $(this).closest('tr').next('tr.x-1').find('span.output');
+    densityFun('1',valObj1,$slt1)
+})
+/*800~850密度计输入事件*/
+$('#tb4 tr.w-2').on('input','td.unified-f input',function(){
+    console.log($(this).val());
+    var val2 = $(this).val()?Number($(this).val()):'';
+    console.log(val2)
+    var avl2 = $(this).closest('tr').next('tr.x-2').find('input.a').val()? Number($(this).closest('tr').next('tr.x-2').find('input.a').val()):0;
+    var bvl2 = $(this).closest('tr').next('tr.x-2').find('input.b').val()?Number($(this).closest('tr').next('tr.x-2').find('input.b').val()):0;
+    var cvl2 = $(this).closest('tr').next('tr.x-2').find('input.c').val()?Number($(this).closest('tr').next('tr.x-2').find('input.c').val()):0;
+    // var dvl2 = $(this).closest('tr').next('tr.x-2').find('input.d').val()?Number($(this).closest('tr').next('tr.x-2').find('input.d').val()):0;
+    console.log(avl2)
+    console.log(bvl2)
+    console.log(cvl2)
+    // console.log(dvl2)
+    var valObj2 = {
+        thisval:val2,
+        av:avl2,
+        bv:bvl2,
+        cv:cvl2,
+        // dv:dvl2
+    }
+    var $slt2 = $(this).closest('tr').next('tr.x-2').find('span.output');
+    densityFun('2',valObj2,$slt2)
+})
+
+/*密度计修正计算公式*/
+function densityFun(type,obj,$l){
+    console.log(type)
+    console.log(obj)
+    console.log($l)
+    if(obj.thisval !== ''){
+        if(type == '1'){
+            var returnVal = 
+            obj.thisval <= 750?obj.av:
+            obj.thisval>750&&obj.thisval<=780?(obj.bv-obj.av)/30*(obj.thisval-750) + obj.av:
+            obj.thisval>780&&obj.thisval<=800?(obj.cv-obj.bv)/20*(obj.thisval-780) + obj.bv:'';
+            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
+            console.log(finalVal)
+            $l.html(finalVal)
+        }else if(type == '2'){
+            var returnVal =
+            obj.thisval <= 800?obj.av:
+            obj.thisval>800&&obj.thisval<=830?(obj.bv-obj.av)/30*(obj.thisval-800) + obj.av:
+            obj.thisval>830&&obj.thisval<=850?(obj.cv-obj.bv)/20*(obj.thisval-830) + obj.bv:'';
+            console.log(returnVal)
+            console.log(PointFloat(returnVal,2))
+            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
+            console.log(finalVal)
+            $l.html(finalVal)
+        }
+    }else{
+        $l.html('');
+    }
+}
+deinputFun('1');
+deinputFun('2');
+function deinputFun(type){
+    $('#tb4 tr.x-'+type+' input.otp').each(function(index,ele){
+        console.log(index)
+         $(this).on('input',function(){
+            console.log($(this).val())
+            var v = $(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()?Number($(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()):0;
+            var $slt = $(this).closest('tr.x-'+type).find('span.output');
+            console.log(v)
+            console.log($slt)
+            if(index == 0){
+                var av= $(this).val()?Number($(this).val()):0;
+                var bv= $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
+                var cv= $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
+                console.log(av)
+                console.log(bv)
+                console.log(cv)
+                var Obj = {
+                    thisval:v,
+                    av:av,
+                    bv:bv,
+                    cv:cv
+                }
+                densityFun(type,Obj,$slt);
+            }else if(index == 1){
+                var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
+                var bv = $(this).val()?Number($(this).val()):0;
+                var cv = $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
+                console.log(av)
+                console.log(bv)
+                console.log(cv)
+                var Obj = {
+                    thisval:v,
+                    av:av,
+                    bv:bv,
+                    cv:cv
+                }
+                densityFun(type,Obj,$slt);
+            }else if(index == 2){
+                var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
+                var bv = $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
+                var cv = $(this).val()?Number($(this).val()):0;
+                console.log(av)
+                console.log(bv)
+                console.log(cv)
+                var Obj = {
+                    thisval:v,
+                    av:av,
+                    bv:bv,
+                    cv:cv
+                }
+                densityFun(type,Obj,$slt); 
+            }
+         })
+    })
+}
+/*----------------------------------------密度计修正结束-----------------------------------------------*/
+
+
+
+
+
+/*---------------------------废弃代码开始------------------------------------*/
+//温度计修正
+// var Thermometer = [
+//     {
+//         name: '冰点',
+//         list: [
+//             {
+//                 factorynum:'8',
+//                 correction:'-0.03',
+//                 type:'棒式',
+//                 unifiednum:'TT01D023',
+//                 term: '2017.08.14',
+//                 input:true
+//             },{
+//                 factorynum:'43',
+//                 correction:'0.10',
+//                 type:'棒式',
+//                 unifiednum:'TT01D023',
+//                 term: '2018.01.18',
+//                 input:true
+//             },
+//         ]
+//     },{
+//         name: '馏程',
+//         list: [
+//             {
+//                 factorynum:'505',
+//                 correction:'-0.80',
+//                 type:'棒式',
+//                 unifiednum:'TT01D016',
+//                 term: '/',
+//                 input:true
+//             },{
+//                 factorynum:'513',
+//                 correction:'-0.33',
+//                 type:'棒式',
+//                 unifiednum:'TT01D016',
+//                 term: '/',
+//                 input:true
+//             },
+//         ]
+//     },{
+//         name: '密度',
+//         list: [
+//             {
+//                 factorynum:'41',
+//                 correction:'-0.03',
+//                 type:'棒式',
+//                 unifiednum:'TT01DA001',
+//                 term: '2017.12.15',
+//                 input:true
+//             },{
+//                 factorynum:'41',
+//                 correction:'-0.03',
+//                 type:'棒式',
+//                 unifiednum:'TT01DA001',
+//                 term: '2017.12.15',
+//                 input:true
+//             },
+//         ]
+//     }
+// ]
 
 //console.log(Thermometer) 
-var tr3 = '';
-Thermometer.map(function (item, index) {  
-    tr3 += '<tr class="k'+index+'">'+
-			'<td>'+item.name+'</td>'+
-            '<td class="factorynum"></td>'+
-            '<td class="input"></td>' +
-            '<td class="correction"></td>'+
-            '<td class="type"></td>'+
-            '<td class="unifiednum"></td>'+
-            '<td class="term"></td>'+
-        '</tr>';
-    return tr3;
-})
+// var tr3 = '';
+// console.log(api)
+// api.thermometer.map(function (item, index) {  
+//     tr3 += '<tr class="k'+index+'">'+
+//         '<td>' + item.metername+'</td>'+
+//         '<td class="value">'+
+//             '<div>'+
+//                 '<span>实测温度</span>'+
+//                 '<input type="number"/>'+
+//                 '<span>检定点</span>'+
+//                 '<span class="test">' + mapValue(item.value)+'</span>'+
+//             '</div>'+
+//             '<div><span>修正值</span></div>'+
+//         '</td>'+
+//             // '<td class="input"></td>' +
+//             // '<td class="correction"></td>'+
+//             // '<td class="type"></td>'+
+//             // '<td class="unifiednum"></td>'+
+//             // '<td class="term"></td>'+
+//         '</tr>';
+//     return tr3;
+// })
 //console.log(tr3)  
-$('#tb3').append(tr3);
-tagList($('.factorynum'), 'factorynum');
-tagList($('.correction'), 'correction');
-tagList($('.type'), 'type');
-tagList($('.unifiednum'), 'unifiednum');
-tagList($('.term'), 'term');
-tagList($('.input'), 'input');
-function tagList(c, key) {
-        c.each(function (index, ele) {  
-           Thermometer[index].list.map(function (item, index) {
-               if (key === 'correction') {
-                   var div = $('<div><span class="output" data-index='+index+'></span></div>');
-               } else if (key == 'input') {
-                   var div = $('<div><input type="number" class="oneIpt" data-index=' + index +' /></div>')
-               }else {
-                   var div = $('<div>' + item[key] + '</div>');  
-               }   
-                $(ele).append(div)
-            })  
-       })  
-}     
+// $('#tb3').append(tr3);
+
+// tagList($('.factorynum'), 'factorynum');
+// tagList($('.correction'), 'correction');
+// tagList($('.type'), 'type');
+// tagList($('.unifiednum'), 'unifiednum');
+// tagList($('.term'), 'term');
+// tagList($('.input'), 'input');
+
+// function tagList(c, key) {
+//         c.each(function (index, ele) {  
+//            Thermometer[index].list.map(function (item, index) {
+//                if (key === 'correction') {
+//                    var div = $('<div><span class="output" data-index='+index+'></span></div>');
+//                } else if (key == 'input') {
+//                    var div = $('<div><input type="number" class="oneIpt" data-index=' + index +' /></div>')
+//                }else {
+//                    var div = $('<div>' + item[key] + '</div>');  
+//                }   
+//                 $(ele).append(div)
+//             })  
+//        })  
+// }   
+
 //温度计输入计算
-$('#tb3').on('input', 'input.oneIpt', function () {
+/*$('#tb3').on('input', 'input.oneIpt', function () {
     console.log('温度计');
     console.log($(this).val())
     var value = '';
@@ -344,9 +698,9 @@ $('#tb3').on('input', 'input.oneIpt', function () {
        
     } 
        
-})  
+}) */ 
 //冰点温度计修正计算
-function thermometer(index,value) {
+/*function thermometer(index,value) {
     console.log(value)
     var result = '';
     if (value == '' || value== 'undefined') {  
@@ -373,9 +727,9 @@ function thermometer(index,value) {
     }
     console.log(result)
     return result;
-}
+}*/
 //馏程温度计修正计算
-function distillationRange(index,value) {
+/*function distillationRange(index,value) {
     console.log(value)
     var result = '';
     if (value == '' || value== 'undefined') {  
@@ -406,9 +760,9 @@ function distillationRange(index,value) {
     }
     console.log(result)
     return result;
-}
+}*/
 //密度温度计修正计算
-function density(index, value){
+/*function density(index, value){
      console.log(value)
     var result = '';
     if (value == '' || value == 'undefined') {
@@ -438,65 +792,68 @@ function density(index, value){
     }
     console.log(result)
     return result;
-}  
+}  */
+
 
 //密度计修正 
-var Densimeter = [
-    {        
-        factorynum: '94(750～800)',
-        input: true,
-        correction: '',
-        type: 'SY-05',
-        unifiednum: 'TT01D023',
-        term:'2017.08.14'
+// var Densimeter = [
+//     {        
+//         factorynum: '94(750～800)',
+//         input: true,
+//         correction: '',
+//         type: 'SY-05',
+//         unifiednum: 'TT01D023',
+//         term:'2017.08.14'
         
-    },{   
-        factorynum: '316(800～850)',
-        input: true,
-        correction: '',
-        type: 'SY-05',
-        unifiednum: 'TT01D023',
-        term:'2017.08.14'
+//     },{   
+//         factorynum: '316(800～850)',
+//         input: true,
+//         correction: '',
+//         type: 'SY-05',
+//         unifiednum: 'TT01D023',
+//         term:'2017.08.14'
        
-    }
-]
+//     }
+// ]
 
-//console.log(Densimeter)
-var tr4 = '';
-Densimeter.map(function (item, index) {  
-    tr4 += '<tr class="k'+index+'">'+
-			'<td>'+item.factorynum+'</td>'+
-            '<td><input type="number" class="oneIpt" /></td>'+
-            '<td><span class="output"></span></td>' + 
-            '<td>'+item.type+'</td>'+     
-            '<td>'+item.unifiednum+'</td>'+     
-            '<td>'+item.term+'</td>'+     
-        '</tr>';
-    return tr4;
-})
-//console.log(tr4)  
-$('#tb4').append(tr4);
+// //console.log(Densimeter)
+// var tr4 = '';
+// Densimeter.map(function (item, index) {  
+//     tr4 += '<tr class="k'+index+'">'+
+// 			'<td>'+item.factorynum+'</td>'+
+//             '<td><input type="number" class="oneIpt" /></td>'+
+//             '<td><span class="output"></span></td>' + 
+//             '<td>'+item.type+'</td>'+     
+//             '<td>'+item.unifiednum+'</td>'+     
+//             '<td>'+item.term+'</td>'+     
+//         '</tr>';
+//     return tr4;
+// })
+// //console.log(tr4)  
+// $('#tb4').append(tr4);
 
-//密度计输入计算
-$('#tb4').on('input', 'input.oneIpt', function () {
-    console.log('密度计');
-    console.log($(this).val())
-    var value = '';
-    var num = $(this).closest('tr').find('td:first').text();
-    console.log(num)
-    if (num == '94(750～800)') {
-        value = densimeterOne($(this).val());
-    } else if (num == '316(800～850)') {
-        value = densimeterTwo($(this).val());
-    } 
-    console.log(value)  
-    if ($(this).val() != '' && $(this).val() != 'undefined') {
-        $(this).closest('td').next('td').find('span.output').text(PointFloat(value, 2).toFixed(2)) 
-    } else {  
-        $(this).closest('td').next('td').find('span.output').text('错误')
-    } 
+// //密度计输入计算
+// $('#tb4').on('input', 'input.oneIpt', function () {
+//     console.log('密度计');
+//     console.log($(this).val())
+//     var value = '';
+//     var num = $(this).closest('tr').find('td:first').text();
+//     console.log(num)
+//     if (num == '94(750～800)') {
+//         value = densimeterOne($(this).val());
+//     } else if (num == '316(800～850)') {
+//         value = densimeterTwo($(this).val());
+//     } 
+//     console.log(value)  
+//     if ($(this).val() != '' && $(this).val() != 'undefined') {
+//         $(this).closest('td').next('td').find('span.output').text(PointFloat(value, 2).toFixed(2)) 
+//     } else {  
+//         $(this).closest('td').next('td').find('span.output').text('错误')
+//     } 
        
-}) 
+// }) 
+
+/*---------------------------废弃代码结束------------------------------------*/
 //94(750～800)出厂编号计算方法
 function densimeterOne(value) {
     var result = '';
@@ -573,10 +930,21 @@ $('.box').on('click','button',function(){
 
 // 保留小数位数 四舍六入五成双计算方法
 function PointFloat(src, pos) { 
-    return Math.round(src * Math.pow(10, pos)) / Math.pow(10, pos);
+    var val = String(Math.round(Math.abs(src) * Math.pow(10, pos)) / Math.pow(10, pos));
+    var lens = val.split('.');
+    if(lens.length == 1){
+        val+='.';
+        for (var i = 0; i < pos; i++) {
+           val+='0'
+        }
+    }else if(lens.length == 2){
+         for (var i = 0; i < pos - lens[1].length; i++) {
+           val+='0';
+        }
+    }
+    return src<0? '-' + val : val;
 }
 
-  
 
 
 
