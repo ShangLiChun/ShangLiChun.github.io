@@ -293,6 +293,83 @@ $('#tb3 tr.w-3').on('input','td.unified-f input',function(){
     var $select3 = $(this).closest('tr').next('tr.x-3').find('span.output');
     reckonFun('3',valueObj3,$select3)
 })
+
+$(function(){
+    //温度计修正初始化检定值记忆填充
+    var datastorage = localStorage.datastorage ? localStorage.datastorage:'';
+    console.log(datastorage)
+    console.log(JSON.parse(datastorage))
+    $("#tb3 tr:odd").each(function(index,a){
+        console.log($(this))
+        console.log(index)
+        $(this).find('td.unified-td').each(function(i,b){
+            console.log(i)
+            if(index == 0){
+                console.log(JSON.parse(datastorage).a)
+                $(b).find('input').val(Number(JSON.parse(datastorage).a[i]));
+            }else if(index == 1){
+                console.log(JSON.parse(datastorage).b)
+                $(b).find('input').val(Number(JSON.parse(datastorage).b[i])); 
+            }else if(index == 2){
+                console.log(JSON.parse(datastorage).c)
+                $(b).find('input').val(Number(JSON.parse(datastorage).c[i]));
+            }
+        })
+    })
+
+    
+
+    
+})
+
+$(function(){
+    var datastoragetwo = localStorage.datastoragetwo ? JSON.parse(localStorage.datastoragetwo) : '';
+    console.log(datastoragetwo)
+    if (localStorage.datastoragetwo){
+        $("#tb4 tr:odd").each(function (index, a) {
+            console.log($(this))
+            console.log(index)
+            $(this).find('td.unified-td').each(function (i, b) {
+                console.log(i)
+                if (index == 0) {
+                    console.log(datastoragetwo.a)
+                    $(b).find('input').val(Number(datastoragetwo.a[i]));
+                } else if (index == 1) {
+                    console.log(datastoragetwo.b)
+                    $(b).find('input').val(Number(datastoragetwo.b[i]));
+                }
+            })
+        })
+    }
+    
+})
+
+// function eachTag(sle){
+//     var datastorage = localStorage.datastorage ? window.localStorage.datastorage : '';
+//     console.log(datastorage)
+//     console.log(JSON.parse(datastorage))
+//     if (localStorage.datastorage){
+//         sle.each(function (index, a) {
+//             console.log($(this))
+//             console.log(index)
+//             $(this).find('td.unified-td').each(function (i, b) {
+//                 console.log(i)
+//                 if (index == 0) {
+//                     console.log(JSON.parse(datastorage).a)
+//                     $(b).find('input').val(Number(JSON.parse(datastorage).a[i]));
+//                 } else if (index == 1) {
+//                     console.log(JSON.parse(datastorage).b)
+//                     $(b).find('input').val(Number(JSON.parse(datastorage).b[i]));
+//                 } else if (index == 2) {
+//                     console.log(JSON.parse(datastorage).c)
+//                     $(b).find('input').val(Number(JSON.parse(datastorage).c[i]));
+//                 }
+//             })
+//         })
+//     }
+    
+// }
+
 /*温度计计修正计算公式*/
 function reckonFun(type,value,select){
     console.log(type)
@@ -333,7 +410,69 @@ function reckonFun(type,value,select){
     }
     
 }
+function storageoneFun(type,index,val){
+    var initdata = {
+        a: {
+            0: '',
+            1: '',
+            2: '',
+            3: ''
+        },
+        b: {
+            0: '',
+            1: '',
+            2: '',
+            3: ''
+        },
+        c: {
+            0: '',
+            1: '',
+            2: '',
+            3: ''
+        }
+    };
+    var datastorage = localStorage.datastorage ? JSON.parse(localStorage.datastorage) : initdata;
+    console.log(datastorage)
+   
+    if(type == '1'){
+        var a = datastorage.a;
+        a[index] = val;
+    }else if(type == '2'){
+        var b = datastorage.b;
+        b[index] = val;
+    }else if(type == '3'){
+        var c = datastorage.c;
+        c[index] = val
+    }
+    console.log(datastorage)
+    localStorage.datastorage = JSON.stringify(datastorage);
+}
+function storagetwoFun(type, index, val) {
+    var initdata1 = {
+        a: {
+            0: '',
+            1: '',
+            2: ''
+        },
+        b: {
+            0: '',
+            1: '',
+            2: ''
+        }
+    };
+    var datastoragetwo = localStorage.datastoragetwo ? JSON.parse(localStorage.datastoragetwo) : initdata1;
+    console.log(datastoragetwo)
 
+    if (type == '1') {
+        var a = datastoragetwo.a;
+        a[index] = val;
+    } else if (type == '2') {
+        var b = datastoragetwo.b;
+        b[index] = val;
+    }
+    console.log(datastoragetwo)
+    localStorage.datastoragetwo = JSON.stringify(datastoragetwo);
+}
 recinputFun('1')
 recinputFun('2')
 recinputFun('3')
@@ -342,11 +481,15 @@ function recinputFun(type){
     $('#tb3 tr.x-'+type+' input.otp').each(function(index,ele){
     //console.log(index)
     $(this).on('input',function(){
+        storageoneFun(type,index,$(this).val())
         //console.log($(this).val());
         var v = $(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()?Number($(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()):0;
         var $slt = $(this).closest('tr.x-'+type).find('span.output');
         //console.log(v)
         //console.log($slt)
+        
+        // datastorage['reckon' + type] = $(this).val();
+        // console.log(datastorage)
         if(index == 0){
             var av= $(this).val()?Number($(this).val()):0;
             var bv= $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
@@ -364,6 +507,9 @@ function recinputFun(type){
                 dv:dv
             }
             reckonFun(type,Obj,$slt);
+            if (type == '1') {
+
+            }
         }else if(index == 1){
             var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
             var bv = $(this).val()?Number($(this).val()):0;
@@ -533,6 +679,7 @@ function deinputFun(type){
     $('#tb4 tr.x-'+type+' input.otp').each(function(index,ele){
         //console.log(index)
          $(this).on('input',function(){
+             storagetwoFun(type, index, $(this).val())
             //console.log($(this).val())
             var v = $(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()?Number($(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()):0;
             var $slt = $(this).closest('tr.x-'+type).find('span.output');
@@ -1019,6 +1166,7 @@ function exactFixed(floatNum) {
     }
     return Number(floatNum);
 };
+
 function splitNum(str,fh){
     console.log(fh)
     console.log(str)
