@@ -296,30 +296,27 @@ $('#tb3 tr.w-3').on('input','td.unified-f input',function(){
 
 $(function(){
     //温度计修正初始化检定值记忆填充
-    var datastorage = localStorage.datastorage ? localStorage.datastorage:'';
+    var datastorage = localStorage.datastorage ? JSON.parse(localStorage.datastorage):'';
     console.log(datastorage)
-    console.log(JSON.parse(datastorage))
-    $("#tb3 tr:odd").each(function(index,a){
-        console.log($(this))
-        console.log(index)
-        $(this).find('td.unified-td').each(function(i,b){
-            console.log(i)
-            if(index == 0){
-                console.log(JSON.parse(datastorage).a)
-                $(b).find('input').val(Number(JSON.parse(datastorage).a[i]));
-            }else if(index == 1){
-                console.log(JSON.parse(datastorage).b)
-                $(b).find('input').val(Number(JSON.parse(datastorage).b[i])); 
-            }else if(index == 2){
-                console.log(JSON.parse(datastorage).c)
-                $(b).find('input').val(Number(JSON.parse(datastorage).c[i]));
-            }
+    if (localStorage.datastorage){
+        $("#tb3 tr:odd").each(function (index, a) {
+            console.log($(this))
+            console.log(index)
+            $(this).find('td.unified-td').each(function (i, b) {
+                console.log(i)
+                if (index == 0) {
+                    console.log(datastorage.a)
+                    $(b).find('input').val(Number(datastorage.a[i]));
+                } else if (index == 1) {
+                    console.log(datastorage.b)
+                    $(b).find('input').val(Number(datastorage.b[i]));
+                } else if (index == 2) {
+                    console.log(datastorage.c)
+                    $(b).find('input').val(Number(datastorage.c[i]));
+                }
+            })
         })
-    })
-
-    
-
-    
+    }
 })
 
 $(function(){
