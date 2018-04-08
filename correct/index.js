@@ -1,6 +1,6 @@
 //菜单切换
 $('#tabbar').on('click', 'li', function () { 
-    console.log($(this).index())
+    //console.log($(this).index())
     $('#tabbar li').removeClass('active');
     $(this).addClass('active');
     var index = $(this).index();
@@ -10,7 +10,7 @@ $('#tabbar').on('click', 'li', function () {
      
 
 var arr1 = ['5%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '95%', '终馏点'];
-// console.log(arr1)
+// //console.log(arr1)
 var tr1 = '';
 
 for(var i = 0, length1 = arr1.length; i < length1; i++){
@@ -28,7 +28,7 @@ for(var i = 0, length1 = arr1.length; i < length1; i++){
 
 
 var arr2 = ['10%','20%','50%','90%','终馏点'];
-// console.log(arr1)
+// //console.log(arr1)
 var tr2 = '';
 for(var i = 0, length1 = arr2.length; i < length1; i++){
 	tr2 += '<tr class="k'+i+'">'+
@@ -43,7 +43,7 @@ $('#tb2').append(tr2);
 
 //差值计算
 
-// console.log($('#tb1'))
+// //console.log($('#tb1'))
 $('#tb1').on('input','input.oneIpt',function(){
 	$('#tb1 span.output').css('backgroundColor','#fff');
 	var inputItem = $(this).closest('tr').children('td:first').text();
@@ -58,16 +58,16 @@ $('#tb1').on('input','input.oneIpt',function(){
 	}
 
 	if(inputItem == '5%'){
-		// console.log(inputItem);
+		// //console.log(inputItem);
 		var startVal = $('#tb1 tr.p input.oneIpt').val();
-		// console.log(startVal)
+		// //console.log(startVal)
 		var sum = 0.35 * (Number($(this).val()) - Number(startVal))/5 + 1;
 		$('#tb1 tr.p span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 	}
 
 	if(inputItem == '20%'){
 		var startVal = $('#tb1 tr.p input.oneIpt').val();
-		// console.log(startVal)
+		// //console.log(startVal)
 		var sum = 0.41 * (Number($(this).val()) - Number(startVal))/20 + 1;
 		$('#tb1 tr.p1 span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 	}
@@ -75,14 +75,14 @@ $('#tb1').on('input','input.oneIpt',function(){
 	if(inputItem == '10%' || inputItem == '30%'){
 		if(inputItem == '10%'){
 			var startVal = $('#tb1 tr.p3 input.oneIpt').val();
-			// console.log(startVal)
+			// //console.log(startVal)
 			var sum = 0.41 * (Number(startVal) - Number($(this).val()))/20 + 1;
 			$('#tb1 tr.p2 span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 		}
 
 		if(inputItem == '30%'){
 			var startVal = $('#tb1 tr.p1 input.oneIpt').val();
-			// console.log(startVal)
+			// //console.log(startVal)
 			var sum = 0.41 * (Number($(this).val()) - Number(startVal))/20 + 1;
 			$('#tb1 tr.p2 span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 		}
@@ -91,14 +91,14 @@ $('#tb1').on('input','input.oneIpt',function(){
 	if(inputItem == '40%' || inputItem == '60%'){
 		if(inputItem == '40%'){
 			var startVal = $('#tb1 tr.p6 input.oneIpt').val();
-			// console.log(startVal)
+			// //console.log(startVal)
 			var sum = 0.41 * (Number(startVal) - Number($(this).val()))/20 + 1;
 			$('#tb1 tr.p5 span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 		}
 
 		if(inputItem == '60%'){
 			var startVal = $('#tb1 tr.p4 input.oneIpt').val();
-			// console.log(startVal)
+			// //console.log(startVal)
 			var sum = 0.41 * (Number($(this).val()) - Number(startVal))/20 + 1;
 			$('tr.p5 span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 		}
@@ -107,14 +107,14 @@ $('#tb1').on('input','input.oneIpt',function(){
 	if(inputItem == '80%' || inputItem == '90%'){
 		if(inputItem == '80%'){
 			var startVal = $('#tb1 tr.p9 input.oneIpt').val();
-			// console.log(startVal)
+			// //console.log(startVal)
 			var sum = 0.41 * (Number(startVal) - Number($(this).val()))/10 + 1;
 			$('#tb1 tr.p9 span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 		}
 
 		if(inputItem == '90%'){
 			var startVal = $('#tb1 tr.p8 input.oneIpt').val();
-			// console.log(startVal)
+			// //console.log(startVal)
 			var sum = 0.41 * (Number($(this).val()) - Number(startVal))/10 + 1;
 			$('#tb1 tr.p9 span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 		}
@@ -124,7 +124,7 @@ $('#tb1').on('input','input.oneIpt',function(){
 	if(inputItem == '95%' || inputItem == '终馏点'){
 		if(inputItem == '95%'){
 			var startVal = $('#tb1 tr.p11 input.oneIpt').val();
-			// console.log(startVal)
+			// //console.log(startVal)
 			var num = $('#tb1 .recovery').val()
 			var sum = 0.36 * ((Number(startVal) - Number($(this).val()))/(num-95)) + 0.7;
 			$('#tb1 tr.p11 span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
@@ -133,7 +133,7 @@ $('#tb1').on('input','input.oneIpt',function(){
 		if(inputItem == '终馏点'){
 			var startVal = $('#tb1 tr.p10 input.oneIpt').val();
 			var num = $('#tb1 .recovery').val()
-			// console.log(startVal)
+			// //console.log(startVal)
 			var sum = 0.36 * ((Number($(this).val()) - Number(startVal))/(num-95)) + 0.7;
 			$('#tb1 tr.p11 span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 		}
@@ -144,7 +144,7 @@ $('#tb1').on('input','input.oneIpt',function(){
 })
 
 $('#tb1').on('input','.recovery',function(){
-	console.log('回收');
+	//console.log('回收');
 	var val1 = $('#tb1 tr.p10 input.oneIpt').val();
 	var val2 = $('#tb1 tr.p11 input.oneIpt').val();
 	var sum = 0.36 * ((val2 - val1)/($(this).val()-95)) + 0.7;
@@ -157,20 +157,20 @@ $('#tb1').on('input','.recovery',function(){
 $('#tb2').on('input','input.oneIpt',function(){
 	$('#tb2 span.output').css('backgroundColor','#fff');
 	var inputItem = $(this).closest('tr').children('td:first').text();
-	// console.log(inputItem);
+	// //console.log(inputItem);
 	var num = $('#tb2 .recovery').val()
-	// console.log(num)
+	// //console.log(num)
 	var sum = 0.0009*(101.3-Number(num))*(273+Number($(this).val()));
-	// console.log(sum);
-	// console.log($(this).closest('tr').children('td:eq(2)').children('span').html(sum))
+	// //console.log(sum);
+	// //console.log($(this).closest('tr').children('td:eq(2)').children('span').html(sum))
 	$(this).closest('tr').children('td:eq(2)').children('span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 })
 
 $('#tb2 .recovery').on('input',function(){
 	var val = $(this).val();
 	$('#tb2 input.oneIpt').each(function(ele,index){
-		// console.log($(this).val())
-		// console.log($(this).closest('tr').children('td:eq(1)').children('input.oneIpt'));
+		// //console.log($(this).val())
+		// //console.log($(this).closest('tr').children('td:eq(1)').children('input.oneIpt'));
 		var val1 = $(this).closest('tr').children('td:eq(1)').children('input.oneIpt').val();
 		var sum = 0.0009*(101.3-Number(val))*(273+Number(val1));
 		$(this).closest('tr').children('td:eq(2)').children('span.output').text(sum.toFixed(1)).css('backgroundColor','#ddd');
@@ -187,14 +187,14 @@ $('#tb2 .recovery').on('input',function(){
 $('#loss').on('input','input.p_l',function(){
 	$('#loss span.output').css('backgroundColor','#fff');
     var num = $('#loss input.p_k').val() !=''?$('#loss input.p_k').val():0;
-    //console.log(num)
+    ////console.log(num)
 	var sum = 0.5+($(this).val()-0.5)/(1+(101.3-num)/8);
-	// console.log(sum)
-	// console.log($('#loss output.one').text(sum))
+	// //console.log(sum)
+	// //console.log($('#loss output.one').text(sum))
 	$('#loss .output.one').text(sum.toFixed(1)).css('backgroundColor','#ddd');
 
 	var maxVal = $('#loss input.p_m').val() !=''?$('#loss input.p_m').val():0;
-	// console.log((Number(maxVal) + ($(this).val() - sum)).toFixed(1))
+	// //console.log((Number(maxVal) + ($(this).val() - sum)).toFixed(1))
 	$('#loss .output.two').text((maxVal + ($(this).val() - sum)).toFixed(1)).css('backgroundColor','#ddd');
 })
 $('#loss').on('input','input.p_m',function(){
@@ -203,8 +203,8 @@ $('#loss').on('input','input.p_m',function(){
     var num = $('#loss input.p_k').val() != '' ? $('#loss input.p_k').val() : 0;
     var lcVal = 0.5+(starVal-0.5)/(1+(101.3-num)/8);
 	//var lcVal = $('#loss .output.one').text()!=''?$('#loss .output.one').text():0;
-	// console.log(starVal)
-	 //console.log(lcVal)
+	// //console.log(starVal)
+	 ////console.log(lcVal)
     $('#loss .output.one').text(lcVal.toFixed(1)).css('backgroundColor','#ddd');
 	var sum = Number($(this).val()) + (starVal - Number(lcVal))
 	$('#loss .output.two').text(sum.toFixed(1)).css('backgroundColor','#ddd');
@@ -215,9 +215,9 @@ $('#loss').on('input', 'input.p_k', function () {
 	var sum = 0.5+(num-0.5)/(1+(101.3-$(this).val())/8); 
      $('#loss .output.one').text(sum.toFixed(1)).css('backgroundColor', '#ddd');
      var maxVal = $('#loss input.p_m').val() != '' ? $('#loss input.p_m').val() : 0;
-     //console.log(maxVal)
-     //console.log(num)
-     //console.log(sum)
+     ////console.log(maxVal)
+     ////console.log(num)
+     ////console.log(sum)
 	$('#loss .output.two').text((Number(maxVal) + Number(num) - sum).toFixed(1)).css('backgroundColor','#ddd');
 })
 
@@ -225,17 +225,17 @@ $('#loss').on('input', 'input.p_k', function () {
 /*------------------------------------------温度计修正开始---------------------------------------------*/
 /*冰点温度计输入事件*/
 $('#tb3 tr.w-1').on('input','td.unified-f input',function(){
-    console.log($(this).val());
-    var thisval1 = $(this).val()?Number($(this).val()):'';
+    //console.log($(this).val());
+    var thisval1 = String($(this).val()) ?Number($(this).val()):'';
     console.log(thisval1)
     var av1 = $(this).closest('tr').next('tr.x-1').find('input.a').val()? Number($(this).closest('tr').next('tr.x-1').find('input.a').val()):0;
     var bv1 = $(this).closest('tr').next('tr.x-1').find('input.b').val()?Number($(this).closest('tr').next('tr.x-1').find('input.b').val()):0;
     var cv1 = $(this).closest('tr').next('tr.x-1').find('input.c').val()?Number($(this).closest('tr').next('tr.x-1').find('input.c').val()):0;
     var dv1 = $(this).closest('tr').next('tr.x-1').find('input.d').val()?Number($(this).closest('tr').next('tr.x-1').find('input.d').val()):0;
-    console.log(av1)
-    console.log(bv1)
-    console.log(cv1)
-    console.log(dv1)
+    //console.log(av1)
+    //console.log(bv1)
+    //console.log(cv1)
+    //console.log(dv1)
     var valueObj1 = {
         thisval:thisval1,
         av:av1,
@@ -247,106 +247,19 @@ $('#tb3 tr.w-1').on('input','td.unified-f input',function(){
     reckonFun('1',valueObj1,$select1)
 })
 
-
-recinputFun('1')
-recinputFun('2')
-recinputFun('3')
-function recinputFun(type){
-    console.log(type)
-    $('#tb3 tr.x-'+type+' input.otp').each(function(index,ele){
-    console.log(index)
-    $(this).on('input',function(){
-        console.log($(this).val());
-        var v = $(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()?Number($(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()):0;
-        var $slt = $(this).closest('tr.x-'+type).find('span.output');
-        console.log(v)
-        console.log($slt)
-        if(index == 0){
-            var av= $(this).val()?Number($(this).val()):0;
-            var bv= $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
-            var cv= $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
-            var dv= $(this).closest('tr.x-'+type).find('input.d').val()?Number($(this).closest('tr.x-'+type).find('input.d').val()):0;
-            console.log(av)
-            console.log(bv)
-            console.log(cv)
-            console.log(dv)
-            var Obj = {
-                thisval:v,
-                av:av,
-                bv:bv,
-                cv:cv,
-                dv:dv
-            }
-            reckonFun(type,Obj,$slt);
-        }else if(index == 1){
-            var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
-            var bv = $(this).val()?Number($(this).val()):0;
-            var cv = $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
-            var dv = $(this).closest('tr.x-'+type).find('input.d').val()?Number($(this).closest('tr.x-'+type).find('input.d').val()):0;
-            console.log(av)
-            console.log(bv)
-            console.log(cv)
-            console.log(dv)
-            var Obj = {
-                thisval:v,
-                av:av,
-                bv:bv,
-                cv:cv,
-                dv:dv
-            }
-            reckonFun(type,Obj,$slt);
-        }else if(index == 2){
-            var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
-            var bv = $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
-            var cv = $(this).val()?Number($(this).val()):0;
-            var dv = $(this).closest('tr.x-'+type).find('input.d').val()?Number($(this).closest('tr.x-'+type).find('input.d').val()):0;
-            console.log(av)
-            console.log(bv)
-            console.log(cv)
-            console.log(dv)
-            var Obj = {
-                thisval:v,
-                av:av,
-                bv:bv,
-                cv:cv,
-                dv:dv
-            }
-            reckonFun(type,Obj,$slt); 
-        }else if(index == 3){
-            var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
-            var bv = $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
-            var cv = $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
-            var dv = $(this).val()?Number($(this).val()):0;
-            console.log(av)
-            console.log(bv)
-            console.log(cv)
-            console.log(dv)
-            var Obj = {
-                thisval:v,
-                av:av,
-                bv:bv,
-                cv:cv,
-                dv:dv
-            }
-            reckonFun(type,Obj,$slt);
-        }
-    })
-})
-}
-
 /*密度温度计输入事件*/
 $('#tb3 tr.w-2').on('input','td.unified-f input',function(){
-    console.log($(this).val());
-    var thisval2 = $(this).val()?Number($(this).val()):'';
-    console.log(thisval2)
+    //console.log($(this).val());
+    var thisval2 = String($(this).val())?Number($(this).val()):'';
+    //console.log(thisval2)
     var av2 = $(this).closest('tr').next('tr.x-2').find('input.a').val()? Number($(this).closest('tr').next('tr.x-2').find('input.a').val()):0;
     var bv2 = $(this).closest('tr').next('tr.x-2').find('input.b').val()?Number($(this).closest('tr').next('tr.x-2').find('input.b').val()):0;
     var cv2 = $(this).closest('tr').next('tr.x-2').find('input.c').val()?Number($(this).closest('tr').next('tr.x-2').find('input.c').val()):0;
     var dv2 = $(this).closest('tr').next('tr.x-2').find('input.d').val()?Number($(this).closest('tr').next('tr.x-2').find('input.d').val()):0;
-    console.log(av2)
-    console.log(bv2)
-    console.log(cv2)
-    console.log(dv2)
+    //console.log(av2)
+    //console.log(bv2)
+    //console.log(cv2)
+    //console.log(dv2)
     var valueObj2 = {
         thisval:thisval2,
         av:av2,
@@ -359,17 +272,17 @@ $('#tb3 tr.w-2').on('input','td.unified-f input',function(){
 })
 /*馏程温度计输入事件*/
 $('#tb3 tr.w-3').on('input','td.unified-f input',function(){
-    console.log($(this).val());
+    //console.log($(this).val());
     var thisval3 = $(this).val()?Number($(this).val()):'';
-    console.log(thisval3)
+    //console.log(thisval3)
     var av3 = $(this).closest('tr').next('tr.x-3').find('input.a').val()? Number($(this).closest('tr').next('tr.x-3').find('input.a').val()):0;
     var bv3 = $(this).closest('tr').next('tr.x-3').find('input.b').val()?Number($(this).closest('tr').next('tr.x-3').find('input.b').val()):0;
     var cv3 = $(this).closest('tr').next('tr.x-3').find('input.c').val()?Number($(this).closest('tr').next('tr.x-3').find('input.c').val()):0;
     var dv3 = $(this).closest('tr').next('tr.x-3').find('input.d').val()?Number($(this).closest('tr').next('tr.x-3').find('input.d').val()):0;
-    console.log(av3)
-    console.log(bv3)
-    console.log(cv3)
-    console.log(dv3)
+    //console.log(av3)
+    //console.log(bv3)
+    //console.log(cv3)
+    //console.log(dv3)
     var valueObj3 = {
         thisval:thisval3,
         av:av3,
@@ -384,15 +297,15 @@ $('#tb3 tr.w-3').on('input','td.unified-f input',function(){
 function reckonFun(type,value,select){
     console.log(type)
     console.log(value)
-    if(value.thisval!=''){
+    if(String(value.thisval)!=''){
         if(type == '1'){
             var returnVal = 
             value.thisval <= -60?value.av:
             value.thisval>-60&&value.thisval<=-40?(value.bv-value.av)/20*(value.thisval+60) + value.av:
             value.thisval>-40&&value.thisval<=-20?(value.cv-value.bv)/20*(value.thisval+40) + value.bv:
             value.thisval>-20&&value.thisval<=0?(value.dv-value.cv)/20*(value.thisval+20) + value.cv:'';
-            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
-            console.log(finalVal)
+            var finalVal = String(returnVal)?exactFixed(returnVal):'错误';
+            //console.log(finalVal)
             select.html(finalVal)
         }else if(type == '2'){
             var returnVal =
@@ -401,9 +314,9 @@ function reckonFun(type,value,select){
             value.thisval>0&&value.thisval<=20?(value.cv-value.bv)/20*(value.thisval) + value.bv:
             value.thisval>20&&value.thisval<=40?(value.dv-value.cv)/20*(value.thisval-20) + value.cv:'';
             console.log(returnVal)
-            console.log(PointFloat(returnVal,2))
-            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
-            console.log(finalVal)
+            console.log(exactFixed(returnVal))
+            var finalVal = String(returnVal)?exactFixed(returnVal):'错误';
+            //console.log(finalVal)
             select.html(finalVal)
         }else if(type == '3'){
             var returnVal =
@@ -411,8 +324,8 @@ function reckonFun(type,value,select){
             value.thisval>0&&value.thisval<=100?(value.bv-value.av)/100*(value.thisval) + value.av:
             value.thisval>100&&value.thisval<=200?(value.cv-value.bv)/100*(value.thisval-100) + value.bv:
             value.thisval>200&&value.thisval<=300?(value.dv-value.cv)/100*(value.thisval-200) + value.cv:'';
-            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
-            console.log(finalVal)
+            var finalVal = String(returnVal)?exactFixed(returnVal):'错误';
+            //console.log(finalVal)
             select.html(finalVal)
         }
     }else{
@@ -421,22 +334,106 @@ function reckonFun(type,value,select){
     
 }
 
-
+recinputFun('1')
+recinputFun('2')
+recinputFun('3')
+function recinputFun(type){
+    //console.log(type)
+    $('#tb3 tr.x-'+type+' input.otp').each(function(index,ele){
+    //console.log(index)
+    $(this).on('input',function(){
+        //console.log($(this).val());
+        var v = $(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()?Number($(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()):0;
+        var $slt = $(this).closest('tr.x-'+type).find('span.output');
+        //console.log(v)
+        //console.log($slt)
+        if(index == 0){
+            var av= $(this).val()?Number($(this).val()):0;
+            var bv= $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
+            var cv= $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
+            var dv= $(this).closest('tr.x-'+type).find('input.d').val()?Number($(this).closest('tr.x-'+type).find('input.d').val()):0;
+            //console.log(av)
+            //console.log(bv)
+            //console.log(cv)
+            //console.log(dv)
+            var Obj = {
+                thisval:v,
+                av:av,
+                bv:bv,
+                cv:cv,
+                dv:dv
+            }
+            reckonFun(type,Obj,$slt);
+        }else if(index == 1){
+            var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
+            var bv = $(this).val()?Number($(this).val()):0;
+            var cv = $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
+            var dv = $(this).closest('tr.x-'+type).find('input.d').val()?Number($(this).closest('tr.x-'+type).find('input.d').val()):0;
+            //console.log(av)
+            //console.log(bv)
+            //console.log(cv)
+            //console.log(dv)
+            var Obj = {
+                thisval:v,
+                av:av,
+                bv:bv,
+                cv:cv,
+                dv:dv
+            }
+            reckonFun(type,Obj,$slt);
+        }else if(index == 2){
+            var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
+            var bv = $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
+            var cv = $(this).val()?Number($(this).val()):0;
+            var dv = $(this).closest('tr.x-'+type).find('input.d').val()?Number($(this).closest('tr.x-'+type).find('input.d').val()):0;
+            //console.log(av)
+            //console.log(bv)
+            //console.log(cv)
+            //console.log(dv)
+            var Obj = {
+                thisval:v,
+                av:av,
+                bv:bv,
+                cv:cv,
+                dv:dv
+            }
+            reckonFun(type,Obj,$slt); 
+        }else if(index == 3){
+            var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
+            var bv = $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
+            var cv = $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
+            var dv = $(this).val()?Number($(this).val()):0;
+            //console.log(av)
+            //console.log(bv)
+            //console.log(cv)
+            //console.log(dv)
+            var Obj = {
+                thisval:v,
+                av:av,
+                bv:bv,
+                cv:cv,
+                dv:dv
+            }
+            reckonFun(type,Obj,$slt);
+        }
+    })
+})
+}
 /*-----------------------------------------温度计修正结束----------------------------------------------*/
 /*-----------------------------------------密度计修正开始----------------------------------------------*/
 /*750~800密度计输入事件*/
 $('#tb4 tr.w-1').on('input','td.unified-f input',function(){
-    console.log($(this).val());
+    //console.log($(this).val());
     var val1 = $(this).val()?Number($(this).val()):'';
-    console.log(val1)
+    //console.log(val1)
     var avl1 = $(this).closest('tr').next('tr.x-1').find('input.a').val()? Number($(this).closest('tr').next('tr.x-1').find('input.a').val()):0;
     var bvl1 = $(this).closest('tr').next('tr.x-1').find('input.b').val()?Number($(this).closest('tr').next('tr.x-1').find('input.b').val()):0;
     var cvl1 = $(this).closest('tr').next('tr.x-1').find('input.c').val()?Number($(this).closest('tr').next('tr.x-1').find('input.c').val()):0;
     // var dvl1 = $(this).closest('tr').next('tr.x-1').find('input.d').val()?Number($(this).closest('tr').next('tr.x-1').find('input.d').val()):0;
-    console.log(avl1)
-    console.log(bvl1)
-    console.log(cvl1)
-    // console.log(dvl1)
+    //console.log(avl1)
+    //console.log(bvl1)
+    //console.log(cvl1)
+    // //console.log(dvl1)
     var valObj1 = {
         thisval:val1,
         av:avl1,
@@ -449,17 +446,17 @@ $('#tb4 tr.w-1').on('input','td.unified-f input',function(){
 })
 /*800~850密度计输入事件*/
 $('#tb4 tr.w-2').on('input','td.unified-f input',function(){
-    console.log($(this).val());
+    //console.log($(this).val());
     var val2 = $(this).val()?Number($(this).val()):'';
     console.log(val2)
     var avl2 = $(this).closest('tr').next('tr.x-2').find('input.a').val()? Number($(this).closest('tr').next('tr.x-2').find('input.a').val()):0;
     var bvl2 = $(this).closest('tr').next('tr.x-2').find('input.b').val()?Number($(this).closest('tr').next('tr.x-2').find('input.b').val()):0;
     var cvl2 = $(this).closest('tr').next('tr.x-2').find('input.c').val()?Number($(this).closest('tr').next('tr.x-2').find('input.c').val()):0;
     // var dvl2 = $(this).closest('tr').next('tr.x-2').find('input.d').val()?Number($(this).closest('tr').next('tr.x-2').find('input.d').val()):0;
-    console.log(avl2)
-    console.log(bvl2)
-    console.log(cvl2)
-    // console.log(dvl2)
+    //console.log(avl2)
+    //console.log(bvl2)
+    //console.log(cvl2)
+    // //console.log(dvl2)
     var valObj2 = {
         thisval:val2,
         av:avl2,
@@ -473,28 +470,58 @@ $('#tb4 tr.w-2').on('input','td.unified-f input',function(){
 
 /*密度计修正计算公式*/
 function densityFun(type,obj,$l){
-    console.log(type)
+    //console.log(type)
     console.log(obj)
-    console.log($l)
-    if(obj.thisval !== ''){
+    //console.log($l)
+    if(String(obj.thisval)!== ''){
         if(type == '1'){
-            var returnVal = 
-            obj.thisval <= 750?obj.av:
-            obj.thisval>750&&obj.thisval<=780?(obj.bv-obj.av)/30*(obj.thisval-750) + obj.av:
-            obj.thisval>780&&obj.thisval<=800?(obj.cv-obj.bv)/20*(obj.thisval-780) + obj.bv:'';
-            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
-            console.log(finalVal)
-            $l.html(finalVal)
+            if(obj.thisval < 750 || obj.thisval > 800){
+                $l.html('错误');
+            }else{
+                console.log(obj.thisval)
+                // var returnVal = 
+                // obj.thisval = 750?obj.av:
+                // obj.thisval>750&&obj.thisval<=780?Number((Number((obj.bv-obj.av).toFixed(2))/30*(obj.thisval-750) + obj.av).toFixed(2)):
+                // obj.thisval>780&&obj.thisval<=800?Number((obj.cv-obj.bv).toFixed(2))/20*(obj.thisval-780) + obj.bv:'';
+                var returnVal = '';
+                if (obj.thisval == 750){
+                    var returnVal = obj.av
+                } else if (obj.thisval > 750 && obj.thisval <= 780){
+                    var returnVal = (Number((obj.bv - obj.av).toFixed(2)) / 30) * (obj.thisval - 750) + obj.av;
+                } else if (obj.thisval > 780 && obj.thisval <= 800){
+                    var returnVal = (Number((obj.cv - obj.bv).toFixed(2)) / 20) * (obj.thisval - 780) + obj.bv;
+                }
+                console.log(returnVal)
+                var finalVal = String(returnVal)?exactFixed(returnVal):'错误';
+                $l.html(finalVal)
+                // console.log(Number((obj.bv - obj.av).toFixed(2)))
+                // console.log(obj.thisval)
+                // console.log(parseInt(obj.thisval - 750))
+                // console.log((Number((obj.bv - obj.av).toFixed(2)) / 30)*(obj.thisval - 750).toFixed(2))
+            }
         }else if(type == '2'){
-            var returnVal =
-            obj.thisval <= 800?obj.av:
-            obj.thisval>800&&obj.thisval<=830?(obj.bv-obj.av)/30*(obj.thisval-800) + obj.av:
-            obj.thisval>830&&obj.thisval<=850?(obj.cv-obj.bv)/20*(obj.thisval-830) + obj.bv:'';
-            console.log(returnVal)
-            console.log(PointFloat(returnVal,2))
-            var finalVal = String(returnVal)?PointFloat(returnVal,2):'错误';
-            console.log(finalVal)
-            $l.html(finalVal)
+            if(obj.thisval < 800 || obj.thisval > 850){
+               $l.html('错误'); 
+            }else{
+                // var returnVal =
+                // obj.thisval = 800?obj.av:
+                // obj.thisval>800&&obj.thisval<=830?Number((obj.bv-obj.av).toFixed(2))/30*(obj.thisval-800) + obj.av:
+                // obj.thisval>830&&obj.thisval<=850?Number((obj.cv-obj.bv).toFixed(2))/20*(obj.thisval-830) + obj.bv:'';
+                // console.log(returnVal)
+                var returnVal = '';
+                if (obj.thisval == 800){
+                    var returnVal = obj.av;
+                } else if (obj.thisval > 800 && obj.thisval <= 830){
+                    var returnVal = Number((obj.bv - obj.av).toFixed(2)) / 30 * (obj.thisval - 800) + obj.av;
+                } else if (obj.thisval > 830 && obj.thisval <= 850){
+                    var returnVal = Number((obj.cv - obj.bv).toFixed(2)) / 20 * (obj.thisval - 830) + obj.bv;
+                }
+                console.log(obj.thisval)
+                console.log(returnVal)
+                var finalVal = String(returnVal)?exactFixed(returnVal):'错误';
+                console.log(finalVal)
+                $l.html(finalVal) 
+            }
         }
     }else{
         $l.html('');
@@ -504,20 +531,20 @@ deinputFun('1');
 deinputFun('2');
 function deinputFun(type){
     $('#tb4 tr.x-'+type+' input.otp').each(function(index,ele){
-        console.log(index)
+        //console.log(index)
          $(this).on('input',function(){
-            console.log($(this).val())
+            //console.log($(this).val())
             var v = $(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()?Number($(this).closest('tr.x-'+type).prev('tr.w-'+type).find('td.unified-f>input').val()):0;
             var $slt = $(this).closest('tr.x-'+type).find('span.output');
             console.log(v)
-            console.log($slt)
+            //console.log($slt)
             if(index == 0){
                 var av= $(this).val()?Number($(this).val()):0;
                 var bv= $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
                 var cv= $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
-                console.log(av)
-                console.log(bv)
-                console.log(cv)
+                //console.log(av)
+                //console.log(bv)
+                //console.log(cv)
                 var Obj = {
                     thisval:v,
                     av:av,
@@ -529,9 +556,9 @@ function deinputFun(type){
                 var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
                 var bv = $(this).val()?Number($(this).val()):0;
                 var cv = $(this).closest('tr.x-'+type).find('input.c').val()?Number($(this).closest('tr.x-'+type).find('input.c').val()):0;
-                console.log(av)
-                console.log(bv)
-                console.log(cv)
+                // console.log(av)
+                //console.log(bv)
+                //console.log(cv)
                 var Obj = {
                     thisval:v,
                     av:av,
@@ -543,9 +570,9 @@ function deinputFun(type){
                 var av = $(this).closest('tr.x-'+type).find('input.a').val()?Number($(this).closest('tr.x-'+type).find('input.a').val()):0;
                 var bv = $(this).closest('tr.x-'+type).find('input.b').val()?Number($(this).closest('tr.x-'+type).find('input.b').val()):0;
                 var cv = $(this).val()?Number($(this).val()):0;
-                console.log(av)
-                console.log(bv)
-                console.log(cv)
+                //console.log(av)
+                //console.log(bv)
+                //console.log(cv)
                 var Obj = {
                     thisval:v,
                     av:av,
@@ -559,8 +586,11 @@ function deinputFun(type){
 }
 /*----------------------------------------密度计修正结束-----------------------------------------------*/
 
-
-
+// var a = 0.05,b = -0.1;
+// var c = a - b;
+// console.log(c.toFixed(2))
+// console.log((Number(c.toFixed(2)) / 30)*10 + b)
+// console.log(exactFixed((a-b)/30*10+b))
 
 
 /*---------------------------废弃代码开始------------------------------------*/
@@ -626,9 +656,9 @@ function deinputFun(type){
 //     }
 // ]
 
-//console.log(Thermometer) 
+////console.log(Thermometer) 
 // var tr3 = '';
-// console.log(api)
+// //console.log(api)
 // api.thermometer.map(function (item, index) {  
 //     tr3 += '<tr class="k'+index+'">'+
 //         '<td>' + item.metername+'</td>'+
@@ -649,7 +679,7 @@ function deinputFun(type){
 //         '</tr>';
 //     return tr3;
 // })
-//console.log(tr3)  
+////console.log(tr3)  
 // $('#tb3').append(tr3);
 
 // tagList($('.factorynum'), 'factorynum');
@@ -676,8 +706,8 @@ function deinputFun(type){
 
 //温度计输入计算
 /*$('#tb3').on('input', 'input.oneIpt', function () {
-    console.log('温度计');
-    console.log($(this).val())
+    //console.log('温度计');
+    //console.log($(this).val())
     var value = '';
     var index = $(this).attr('data-index');
     if ($(this).closest('tr').find('td:first').text() == '冰点') {
@@ -687,11 +717,11 @@ function deinputFun(type){
     } else if ($(this).closest('tr').find('td:first').text() == '密度') {
         value = density(index, $(this).val());
     }     
-    console.log(value)  
+    //console.log(value)  
     if ($(this).val() != '' && $(this).val() != 'undefined') {
-        console.log(PointFloat(value, 2)) 
-        console.log(index)
-        console.log($(this).closest('td').next())
+        //console.log(PointFloat(value, 2)) 
+        //console.log(index)
+        //console.log($(this).closest('td').next())
         $(this).closest('td').next().find('.output[data-index=' + index + ']').text(PointFloat(value, 2).toFixed(2)).css('backgroundColor', '#ddd');  
     } else {  
         $(this).closest('td').next().find('.output[data-index=' + index + ']').text('错误').css('backgroundColor', '#ddd');
@@ -701,7 +731,7 @@ function deinputFun(type){
 }) */ 
 //冰点温度计修正计算
 /*function thermometer(index,value) {
-    console.log(value)
+    //console.log(value)
     var result = '';
     if (value == '' || value== 'undefined') {  
         result = ''; 
@@ -725,12 +755,12 @@ function deinputFun(type){
         }
         
     }
-    console.log(result)
+    //console.log(result)
     return result;
 }*/
 //馏程温度计修正计算
 /*function distillationRange(index,value) {
-    console.log(value)
+    //console.log(value)
     var result = '';
     if (value == '' || value== 'undefined') {  
         result = ''; 
@@ -758,12 +788,12 @@ function deinputFun(type){
         }
         
     }
-    console.log(result)
+    //console.log(result)
     return result;
 }*/
 //密度温度计修正计算
 /*function density(index, value){
-     console.log(value)
+     //console.log(value)
     var result = '';
     if (value == '' || value == 'undefined') {
         result = '';
@@ -790,7 +820,7 @@ function deinputFun(type){
             }
         }
     }
-    console.log(result)
+    //console.log(result)
     return result;
 }  */
 
@@ -816,7 +846,7 @@ function deinputFun(type){
 //     }
 // ]
 
-// //console.log(Densimeter)
+// ////console.log(Densimeter)
 // var tr4 = '';
 // Densimeter.map(function (item, index) {  
 //     tr4 += '<tr class="k'+index+'">'+
@@ -829,22 +859,22 @@ function deinputFun(type){
 //         '</tr>';
 //     return tr4;
 // })
-// //console.log(tr4)  
+// ////console.log(tr4)  
 // $('#tb4').append(tr4);
 
 // //密度计输入计算
 // $('#tb4').on('input', 'input.oneIpt', function () {
-//     console.log('密度计');
-//     console.log($(this).val())
+//     //console.log('密度计');
+//     //console.log($(this).val())
 //     var value = '';
 //     var num = $(this).closest('tr').find('td:first').text();
-//     console.log(num)
+//     //console.log(num)
 //     if (num == '94(750～800)') {
 //         value = densimeterOne($(this).val());
 //     } else if (num == '316(800～850)') {
 //         value = densimeterTwo($(this).val());
 //     } 
-//     console.log(value)  
+//     //console.log(value)  
 //     if ($(this).val() != '' && $(this).val() != 'undefined') {
 //         $(this).closest('td').next('td').find('span.output').text(PointFloat(value, 2).toFixed(2)) 
 //     } else {  
@@ -889,11 +919,11 @@ function densimeterTwo(value) {
 
 //电导率输入计算
 $('#tb5').on('input', 'input.oneIpt', function () {
-    console.log('电导率');
-    console.log($(this).val())
+    //console.log('电导率');
+    //console.log($(this).val())
     var value = '';  
     value = conductivity($(this).val());
-    console.log(value)  
+    //console.log(value)  
     if ($(this).val() != '' && $(this).val() != 'undefined') {
         $(this).closest('td').next('td').find('span.output').text(Math.round(value)) 
     } else {  
@@ -945,9 +975,59 @@ function PointFloat(src, pos) {
     return src<0? '-' + val : val;
 }
 
+//console.log(PointFloat(0.525, 2))
+var strs = 0.5350;
+//console.log(strs)
+console.log(exactFixed(strs))
 
+ function myToFixed(num,s) {
+    return (parseInt(Number(num.toFixed(4)) * Math.pow(10, s) + 0.5) / Math.pow(10, s)).toFixed(s);
+};
+//"四舍六入五留双"扩展方法(保留2位小数),floatNum为数字类型
 
-
-
-
-
+function exactFixed(floatNum) {
+    var floatArr = floatNum.toString().split(".")[1];
+    var fh = Number(floatNum) < 0 ? '-' : '';
+    if (floatArr) {
+        floatArr = floatArr.split("");
+        // console.log(floatArr)
+        if (floatArr[2]) {
+            if(floatArr[2] == "5"){
+                if(floatArr.length > 3){
+                    console.log(floatArr.length)
+                    if (floatArr.length == 4 && floatArr[3] == '0'){
+                        // console.log(Number(floatNum))
+                        return splitNum(Number(floatNum));
+                    }
+                    return splitNum((Math.abs(Number(floatNum))* 100 + 1) / 100,fh);
+                }else{
+                    if(floatArr[1] % 2 != 0){
+                        return splitNum((Math.abs(Number(floatNum)) * 100 + 1) / 100,fh);
+                    }else{
+                        // console.log(Number(floatNum))
+                        return splitNum(Number(floatNum));
+                    }
+                }
+            }else if(floatArr[2] < "5"){
+                return splitNum(Number(floatNum));
+            }else{
+                return splitNum((Math.abs(Number(floatNum)) * 100 + 1) / 100,fh);
+            }
+            
+        }
+        return Number(floatNum);
+    }
+    return Number(floatNum);
+};
+function splitNum(str,fh){
+    console.log(fh)
+    console.log(str)
+    var splitone = str.toString().split('.')[0];
+    var splittwo = str.toString().split('.')[1].split('');
+    console.log(splitone)
+    console.log(splittwo)
+    console.log(splitone + '.' + splittwo[0] + splittwo[1])
+    return Number(fh&&fh != ''?fh+ splitone + '.' + splittwo[0] + splittwo[1]:splitone + '.' + splittwo[0] + splittwo[1]);
+}
+var strs = 1.235;
+console.log(splitNum(strs))
