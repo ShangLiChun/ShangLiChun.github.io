@@ -298,7 +298,7 @@ $(function(){
     //温度计修正初始化检定值记忆填充
     var datastorage = localStorage.datastorage ? JSON.parse(localStorage.datastorage):'';
     console.log(datastorage)
-    if (localStorage.datastorage){
+    if (datastorage!=''){
         $("#tb3 tr:odd").each(function (index, a) {
             console.log($(this))
             console.log(index)
@@ -322,7 +322,7 @@ $(function(){
 $(function(){
     var datastoragetwo = localStorage.datastoragetwo ? JSON.parse(localStorage.datastoragetwo) : '';
     console.log(datastoragetwo)
-    if (localStorage.datastoragetwo){
+    if (datastoragetwo!=''){
         $("#tb4 tr:odd").each(function (index, a) {
             console.log($(this))
             console.log(index)
